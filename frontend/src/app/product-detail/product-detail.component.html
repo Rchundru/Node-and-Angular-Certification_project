@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+
+<div style="margin: 40px 20%">
+    <div class="card">
+    <div class="card-header bg-warning" >
+        <b>Details</b>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Product Name</th>
+                    <td>{{ product.name }}</td>
+                </tr>
+
+                <tr>
+                    <th>Product Price</th>
+                    <td *ngIf="product.discountPrice!=product.price">
+                        <span style="text-decoration: line-through; color: red;">{{ product.price | currency:"EUR" }}</span> {{ product.discountPrice | currency:"EUR" }}
+                    </td>
+                    <td *ngIf="product.discountPrice==product.price">
+                        {{ product.discountPrice | currency:"EUR" }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Product Description</th>
+                    <td>{{ product.description }}</td>
+                </tr>
+
+                <tr>
+                    <th></th>
+                    <td><img src="{{ product.image }}" height="350" width="350" style="object-fit: cover;" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a (click)="addtocart()" class="btn btn-secondary">Add to Cart</a> 
+    </div>
+</div>
+</div>

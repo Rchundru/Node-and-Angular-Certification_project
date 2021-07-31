@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+</head>
+<body>
+    <app-navbar></app-navbar>
+    
+    <div style="margin: 40px 20%">
+        <h2>Your Orders</h2>
+
+        <div *ngIf="orders.length==0">
+            <p style="text-align: center;">No orders found</p>
+        </div>
+    
+        <div *ngFor="let order of orders" style="overflow: hidden; height: 100px; padding-top: 20px; border-bottom: 1px solid black;">
+            <div style="float: left">
+                <p style="margin-bottom: 0; margin-top: 10px"><b>Order #{{order._id}}</b></p>
+                <p>{{order.email}}</p>
+            </div>
+            <button (click)="openpopup(order)" style="float: right; margin-top: 10px; margin-right: 5px" class="btn btn-primary">Details</button>
+        </div>
+
+        <h2 *ngIf="popup.name" style="margin-top: 40px;">Details</h2>
+        <p style="margin-bottom: 0">{{popup.name}}</p>
+        <p style="margin-bottom: 0">{{popup.address}}</p>
+        <p style="margin-bottom: 0">{{popup.address2}}</p>
+        <p style="margin-bottom: 0">{{popup.products}}</p>
+
+    </div>
+
+    
+</body>
+</html>

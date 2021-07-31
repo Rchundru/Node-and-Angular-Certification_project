@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+
+<div style="margin: 20px 10%;" *ngIf="userAccess=='admin'">
+<a routerLink='/admin-add-user' class="btn btn-secondary" style="float: right; margin-right: 12px">Add User</a>
+<h3 style="margin-top: 40px">User List</h3>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Access Level</th>
+            <th>Street Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userList">
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.userAccess}}</td>
+            <td>{{user.streetAddress}}</td>
+            <td>{{user.city}}</td>
+            <td>{{user.state}}</td>
+            <td>{{user.zipCode}}</td>
+            <td>
+                <form (ngSubmit)='deleteUser(user._id)'>
+                    <a class="btn btn-primary" [routerLink]="['/admin-edit-single-user/', user._id]">Edit User Details</a> | 
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                <!-- <a class="btn btn-primary" [routerLink]="['/edit-profile', user._id]">Edit User Details</a> -->
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>

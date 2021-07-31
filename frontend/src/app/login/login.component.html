@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Login</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+    <link href="login.component.css" rel="stylesheet">
+</head>
+<app-navbar></app-navbar>
+<body class="text-center">
+    <br>
+    <div style="float: left; width: 50%">
+        <h2 style="text-align: left; margin: 10px 100px;">Welcome to Shop 24x7</h2>
+        <p style="text-align: left; margin: 0 100px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div style="float: left; width: 50%">
+        <form (ngSubmit)="onSubmit()" class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+            <input type="text" class="form-control" name="username" [(ngModel)]="login.username" placeholder="Email" autofocus/>
+            <input type="password" class="form-control" name="password"  [(ngModel)]="login.password" placeholder="Password"/>
+            <input type="submit" value="Login" class="btn btn-lg btn-primary btn-block"/> | 
+            <button onclick="window.location.href='/register'" class="btn btn-lg btn-secondary btn-block">Sign Up</button>
+        </form>
+    </div>
+    
+</body>
+</html>

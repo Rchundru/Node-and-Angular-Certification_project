@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24x7 Shop</title>
+    <script language="JavaScript" type="text/javascript">
+        $(document).ready(function() {
+            $('.carousel').carousel({
+                interval: 1000
+            })
+        });
+    </script>
+</head>
+<body>
+    <app-navbar></app-navbar>
+
+    <div class="container" style="margin-top: 20px; max-width: 1000px;">
+        <app-carousel></app-carousel>
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-sm-4">
+                <div routerLink="/products" class="card" style="border-radius: 10px;" data-testid="homepage-category">
+                    <img class="card-img-top" style="border-radius: 10px; filter: brightness(50%)" src="/assets/images/first_slide.png">
+                    <p style="font-size: 40px; color: white; position: absolute; top: 15px; left: 30px"><b>Audio</b></p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div routerLink="/products" class="card" style="border-radius: 10px;" data-testid="homepage-category">
+                    <img class="card-img-top" style="border-radius: 10px; filter: brightness(50%)" src="/assets/images/first_slide.png">
+                    <p style="font-size: 40px; color: white; position: absolute; top: 15px; left: 30px"><b>Appliances</b></p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div routerLink="/products" class="card" style="border-radius: 10px;" data-testid="homepage-category">
+                    <img class="card-img-top" style="border-radius: 10px; filter: brightness(50%)" src="/assets/images/first_slide.png">
+                    <p style="font-size: 40px; color: white; position: absolute; top: 15px; left: 30px"><b>Video Games</b></p>
+                </div>
+            </div>
+        </div>
+        <h4 style="margin-top: 20px;">Top Products</h4>
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-sm-4" style="margin-bottom: 20px;" *ngFor="let product of products">
+                <div *ngIf="products.indexOf(product) < 6">
+                <div class="card" style="border-radius: 10px;" data-testid="homepage-product">
+                    <img class="card-img-top" style="border-top-left-radius: 10px; border-top-right-radius: 10px; object-fit: cover; width: 310px; height: 200px" src={{product.image}}>
+                    <div *ngIf="product.name == 'iPod Nano'" style="background-color: #f7c000; position: absolute; top: 20px; left: 0; width: 135px; height: 25px; padding-left: 5px;">
+                        <p>#1 in Best Selling</p>
+                    </div>
+                    <div class="card-body">
+                        <p style="text-align: center;"><b>{{product.name}}</b></p>
+                        <p style="float: left">${{product.price}}</p>
+                        <!-- <a href="#" class="btn btn-primary" style="float: right">Add to Cart</a> -->
+                        <a [routerLink]="['/product-detail', product._id]" class="btn btn-primary" style="float: right">View Details</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+<div style="height: 50px; width: 100%; background-color: #f7c000; margin-top: 100px;">
+    <p style="padding-left: 10px; font-size: 12px; line-height: 50px;"><b>Copyright 2021</b></p>
+</div>
+</body>
+</html>

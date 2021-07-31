@@ -1,0 +1,80 @@
+<div *ngIf="userAccess!='admin'">
+  <!-- <div *ngIf="userAccess=='customer' || loginPage=='yes'"> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 5px 10px; background-color: #f7c000 !important;">
+    <a class="navbar-brand" routerLink="/"><b>24x7 Shop</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <form>
+                <a class="nav-link" type="submit" routerLink="/">Home</a>
+            </form>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="/products">Departments</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/offers">Offers</a>
+        </li>
+        <li class="nav-item">
+            <form (ngSubmit)="navToProfile()">
+                <input class="nav-link" style="border: none; background: none;" type="submit" value="Profile" >
+            </form>
+        </li>
+        <li *ngIf="userAccess=='customer'" class="nav-item">
+          <a class="nav-link" routerLink="/orders">Orders</a>
+        </li>
+      </ul>
+      <div style="width: 270px; position: absolute; top: 5px; right: 5px">
+        <form class="my-2 my-lg-0">
+            <input class="form-control mr-sm-2" style="float: left; width: 200px; margin-right: 10px" type="search" placeholder="Search" aria-label="Search">
+        </form>
+        <button routerLink="/cart" class="btn btn-secondary my-2 my-sm-0" style="float: left">Cart</button>
+    </div>
+    </div>
+</nav>
+</div>
+<div *ngIf="userAccess=='admin'">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 5px 10px; background-color: #f7c000 !important;">
+      <a class="navbar-brand" routerLink="/"><b>24x7 Shop</b></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <form>
+                  <a class="nav-link" type="submit" routerLink="/">Home</a>
+              </form>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/products">Departments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin-edit-users">Manage Users</a>
+          </li>
+          <li class="nav-item">
+              <form (ngSubmit)="navToProfile()">
+                  <input class="nav-link" style="border: none; background: none;" type="submit" value="Profile" >
+              </form>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/orders">Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/orders">Manage Orders</a>
+          </li>
+        </ul>
+        <div style="width: 270px; position: absolute; top: 5px; right: 5px">
+          <form class="my-2 my-lg-0">
+              <input class="form-control mr-sm-2" style="float: left; width: 200px; margin-right: 10px" type="search" placeholder="Search" aria-label="Search">
+          </form>
+          <button routerLink="/cart" class="btn btn-secondary my-2 my-sm-0" style="float: left">Cart</button>
+      </div>
+      </div>
+  </nav>
+  </div>

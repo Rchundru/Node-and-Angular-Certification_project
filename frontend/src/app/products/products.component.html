@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+
+<br>
+<a *ngIf= "isAdmin" routerLink='/product-add' class="btn btn-danger" style="float: right; margin-right: 30px">Add New Product</a>
+<br />
+
+
+
+<div class="row" style="margin: 20px 20%;">
+    <div class="col-sm-4" style="margin-bottom: 20px;" *ngFor="let product of displayList">
+        <div class="card" style="border-radius: 10px;" data-testid="homepage-product">
+            <img class="card-img-top" style="border-top-left-radius: 10px; border-top-right-radius: 10px; object-fit: cover; width: 270px; height: 200px" src={{product.image}}>
+            <div *ngIf="product.name == 'iPod Nano'" style="background-color: #f7c000; position: absolute; top: 20px; left: 0; width: 135px; height: 25px; padding-left: 5px;">
+                <p>#1 in Best Selling</p>
+            </div>
+            <div class="card-body">
+                <p style="text-align: center;"><b>{{product.name}} - ${{product.price}}</b></p>
+                <p style="float: left"></p>
+                <a [routerLink]="['/product-detail', product._id]" class="btn btn-secondary" style="float: left">View Details</a>
+                <a (click)="addtocart(product)" class="btn btn-primary" style="float: right">Add to Cart</a>
+            </div>
+            <div *ngIf="isAdmin" class="card-footer">
+                <a [routerLink]="['/product-edit', product._id]" class="btn btn-link" style="color: black;">Edit</a>
+                <a [routerLink]="['/product-delete', product._id]" class="btn btn-link" style="color: red;">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="height: 50px; width: 100%; background-color: #f7c000; margin-top: 100px;">
+    <p style="padding-left: 10px; font-size: 12px; line-height: 50px;"><b>Copyright 2021</b></p>
+</div>

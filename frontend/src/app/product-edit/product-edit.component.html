@@ -1,0 +1,85 @@
+<app-navbar></app-navbar>
+
+<div style="margin: 40px 20%">
+    <h3><b>Edit Product</b></h3>
+    <form #editform ="ngForm">
+        <div class="mb-3">
+            <label for="name" class="form-label">Product Name</label>
+            <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="product.name"
+            [ngClass]="{'is-invalid': name.touched && name.invalid}"
+                maxlength="64" required/>
+                <div *ngIf="name.touched && name.invalid" class="invalid-feedback">
+                    <div *ngIf="name!.errors!.required">
+                        Product name is required
+                    </div>
+                    <div *ngIf="name!.errors!.maxlength">
+                        Max length is 64
+                    </div>
+                </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="department" class="form-label">Product Department</label>
+            <input type="text" class="form-control" #department = "ngModel" name="department" [(ngModel)]="product.department"
+            [ngClass]="{'is-invalid': department.touched && department.invalid}"
+            required/>
+                <div *ngIf="department.touched && department.invalid" class="invalid-feedback">
+                    <div *ngIf="department!.errors!.required">
+                        Department name is required
+                    </div>
+                </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Product Price</label>
+            <input type="text" class="form-control" #price="ngModel" name="price" [(ngModel)]="product.price"
+            [ngClass]="{'is-invalid': price.touched && price.invalid}"
+            required />
+                <div *ngIf="price.touched && price.invalid" class="invalid-feedback">
+                    <div *ngIf="price!.errors!.required">
+                        Price is required
+                    </div>
+                </div>
+        </div>
+        <div class="mb-3">
+            <label for="discountPrice" class="form-label">Discount Price</label>
+            <input type="text" class="form-control" name="discountPrice" [(ngModel)]="product.discountPrice"/>
+    
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="text" class="form-control" #image="ngModel" name="image" [(ngModel)]="product.image"
+            [ngClass]="{'is-invalid': image.touched && image.invalid}"
+            required />
+            </div>
+                <div *ngIf="image.touched && image.invalid" class="invalid-feedback">
+                    <div *ngIf="image!.errors!.required">
+                        Image is required
+                    </div>
+                </div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="description" class="form-label">Product Description</label>
+            <input type="text" class="form-control" #description="ngModel" name="description" [(ngModel)]="product.description"
+            [ngClass]="{'is-invalid': description.touched && description.invalid}"
+            minlength="20" required/>
+                <div *ngIf="description.touched && description.invalid" class="invalid-feedback">
+                    <div *ngIf="description!.errors!.required">
+                        Description is required
+                    </div>
+                    <div *ngIf="description!.errors!.minlength">
+                        Description should be at least 20 characters
+                    </div>
+                </div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="top-selling">Top Selling Product</label>
+            <input style="margin-left: 10px;" type="checkbox" id="top-selling" name="top-selling" value="top-selling">
+        </div>
+    <div class="mb-3">
+        <input type="button" value="Update Product" class="btn btn-warning" (click)="updateProduct()" />
+    </div>
+    </form>
+
+</div>

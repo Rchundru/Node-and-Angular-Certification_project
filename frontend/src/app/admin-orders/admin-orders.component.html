@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Orders</title>
+</head>
+<body>
+    <app-navbar></app-navbar>
+
+    <div style="margin: 40px 20%">
+        <h2>Manage Orders</h2>
+
+        <div *ngIf="orders.length==0">
+            <p style="text-align: center;">No orders found</p>
+        </div>
+    
+        <div *ngFor="let order of orders">
+            <div *ngIf="order.status=='In-process'" style="overflow: hidden; height: 100px; padding-top: 20px; border-bottom: 1px solid black;">
+            <div style="float: left">
+                <p style="margin-bottom: 0; margin-top: 10px"><b>Order #{{order._id}}</b></p>
+                <p>{{order.email}}</p>
+            </div>
+            <button (click)="delete(order)" style="float: right; margin-top: 10px; margin-right: 5px" class="btn btn-danger">Delete</button>
+            <button (click)="process(order)" style="float: right; margin-top: 10px; margin-right: 5px" class="btn btn-primary">Process</button>
+            </div>
+        </div>
+        <div *ngFor="let order of orders">
+            <div *ngIf="order.status=='Delivered'" style="overflow: hidden; height: 100px; padding-top: 20px; border-bottom: 1px solid black;">
+            <div style="float: left">
+                <p style="margin-bottom: 0; margin-top: 10px; color: green"><b>Order #{{order._id}}</b></p>
+                <p>{{order.email}}</p>
+            </div>
+            <button (click)="delete(order)" style="float: right; margin-top: 10px; margin-right: 5px" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
